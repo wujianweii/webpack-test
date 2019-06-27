@@ -1,11 +1,14 @@
-###problem
+# problem
+
  - eslint // Error: Cannot find module 'eslint/lib/formatters/stylish' 未解决
 
 
-`npm install --save-dev ***`
-对应插件及其功能
+> webpack-功能配置
 
-###webpack
+`npm install --save-dev ***`
+
+
+### webpack
 
 时间
 webpack.config.js - 32.28 33.00
@@ -19,7 +22,7 @@ package.json -
 dev - 写到内存中·静态服务
 
 
-###css
+### css
 
 
 css 模块引入
