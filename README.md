@@ -1,11 +1,15 @@
-# problem
-
- - eslint // Error: Cannot find module 'eslint/lib/formatters/stylish' 未解决
-
-
-> webpack-功能配置
+# webpack
 
 `npm install --save-dev ***`
+
+> problem
+
+ - eslint  //Error: Cannot find module 'eslint/lib/formatters/stylish' 未解决
+
+
+
+
+
 
 
 ### webpack
