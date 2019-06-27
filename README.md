@@ -2,9 +2,10 @@
 
 `npm install --save-dev ***`
 
-> problem
+### problem
 
- - eslint  //Error: Cannot find module 'eslint/lib/formatters/stylish' 未解决
+ - eslint
+   Error: Cannot find module 'eslint/lib/formatters/stylish' 未解决
 
 
 
