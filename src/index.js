@@ -1,4 +1,5 @@
 require("./index.css");
+import './styles/a';
 // require("./a.js");
 
 // class A {
@@ -27,3 +28,34 @@ let img = new Image();
 img.src = logo;
 img.style.width = '200px';
 $('body').prepend(img);
+
+
+
+
+// let xhr = new XMLHttpRequest();
+// xhr.open('GET', '/api/name', true);
+// xhr.onload = function() {
+//   $('body').prepend('<h2>' + JSON.parse(xhr.response).name + '</h2>');
+// }
+// xhr.send();
+
+
+
+let url = '';
+if (DEV === 'dev') {
+  url= "http://localhost:9999";
+} else {
+  url= "http://cdn.myfans.cc";
+}
+console.log(url);
+console.log(FLAG);
+console.log(NUM);
+
+
+import moment from 'moment';
+// 设置语言
+// 忽略语言包后 手动引入所需要的语言
+// import 'moment/local/zh-cn';
+moment.locale('zh-cn');
+const time = moment().endOf('day').fromNow();
+console.log(time);
