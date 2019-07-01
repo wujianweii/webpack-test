@@ -1,1 +1,3 @@
-console.log("other");
+import './a';
+import './b';
+console.log('other.js')

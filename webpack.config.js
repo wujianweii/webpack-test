@@ -6,16 +6,36 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 将css提取
 // const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'); // css压缩
 
 // 插件
-// 1）CleanWebpackPlugin // 打包前删除原打包文件
-// 2) CopyWebpackPlugin // 打包时将别的文件打包(拷贝文件)
-// 3) BannerPlugin 内置 版权声明 给每个js加上字符串
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+// 1） CleanWebpackPlugin // 打包前删除原打包文件
+// 2)  CopyWebpackPlugin // 打包时将别的文件打包(拷贝文件)
+// 3)  BannerPlugin 内置 版权声明 给每个js加上字符串
+// const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+// const CopyWebpackPlugin = require("copy-webpack-plugin");
+
+// 模块 Happypack 能实现多线程打包
+// const Happypack = require('happypack');
 
 const webpack = require("webpack");
 module.exports = {
+  // 优化项
   optimization: {
-    // 优化项
+    // 之前使用 commonChunkPlugins
+    splitChunks: { // 分割代码块
+      cacheGroups: { // 缓存组
+        common: { // 公共模块 抽离自己写的文件
+          chunks: 'initial',
+          minSize: 0, // 文件大小
+          minChunks: 2 // 最小公用次数
+        },
+        vendor: { // 抽离第三方文件
+          priority: 1, // 权重 先抽离
+          test: /node_module/,
+          chunks: 'initial',
+          minSize: 0, // 文件大小
+          minChunks: 2 // 最小公用次数
+        }
+      },
+    },
     // minimizer: [
     //   new TerserJSPlugin({}),
     //   new OptimizeCSSAssetsPlugin({
@@ -32,30 +52,38 @@ module.exports = {
   entry: {
     // 多个入口文件·多页面应用
     index: "./src/index.js",
-    // other: './src/other.js'
+    other: './src/other.js'
   }, // 入口
+  output: {
+    // 出口
+    filename: '[name].[hash:8].js', // 打包后的文件名 [hash: 8]-每次打包生成一个新的文件 以hash区分
+    path: path.resolve(__dirname, "dist"), // 路径必须是绝对路径,
+    // publicPath: 'https://cdn.myfans.cc' // 公用的路径 调用资源的时候统一加上该路径
+  },
   // 报错-调试
   // 1) 源码映射文件 会单独生成一个sourcemap文件 出错时会标识当前报错的行和列 特点是 大 和 全
   // devtool: 'source-map', // 增加映射文件 帮助调试源代码
   // 2） 不会产生新的文件 出错时会标识当前报错的行和列
-  // devtool: 'eval-source-map',
+  devtool: 'eval-source-map',
   // 3）不会产生列 但是是一盒单独的映射文件
   // devtool: 'cheap-module-source-map', // 产生后可以保留起来 用来调试
   // 4）不会产生文件和列 集成在打包后的文件中
-  devtool: 'cheap-module-eval-source-map',
-  watch: true,
-  watchOptions: {
-    //监控的选项 时时打包
-    poll: 1000, // 每秒监听的次数
-    aggregateTimeout: 500, // 防抖 停止500m后重新run
-    ignored: /node_modules/ // 不需要监听的文件
-  },
+  // devtool: 'cheap-module-eval-source-map',
+  // watch: true,
+  // watchOptions: {
+  //   //监控的选项 时时打包
+  //   poll: 1000, // 每秒监听的次数
+  //   aggregateTimeout: 500, // 防抖 停止500m后重新run
+  //   ignored: /node_modules/ // 不需要监听的文件
+  // },
   devServer: {
     port: 9999,
+    hot: true, // 启用热更新
+    // open: true, // 重新打开页面 run
     progress: true,
-    contentBase: "./build",
+    contentBase: "./dist",
     compress: true,
-    // 1）代理 以重写的方式将请求代理到express服务器上 有毒
+    // 1）代理 以重写的方式将请求代理到express服务器上 有毒（未成功）
     // proxy: {
     //   '/api': {
     //     target: 'http://localhost:9999/',
@@ -74,12 +102,6 @@ module.exports = {
     // }
     // 3) 有服务端 不用代理来处理 在服务端中启动webpack 端口用服务端端口
   },
-  output: {
-    // 出口
-    filename: '[name].[hash:8].js', // 打包后的文件名 [hash: 8]-每次打包生成一个新的文件 以hash区分
-    path: path.resolve(__dirname, "build"), // 路径必须是绝对路径,
-    // publicPath: 'https://cdn.myfans.cc' // 公用的路径 调用资源的时候统一加上该路径
-  },
   resolve: {
     // 解析第三方包 common
     modules: [path.resolve('node_modules')], // 从node_modules下找
@@ -92,6 +114,39 @@ module.exports = {
     // }
   },
   plugins: [
+    new webpack.NamedModulesPlugin(), // 打印更新的模块路径
+    new webpack.HotModuleReplacementPlugin(), // 热更新插件 支持
+    // new Happypack({
+    //   id: 'css',
+    //   use: [
+    //     MiniCssExtractPlugin.loader, // 抽离成一个文件
+    //     "css-loader",
+    //     "postcss-loader",
+    //   ]
+    // }),
+    // new Happypack({
+    //   // 项目大时使用多线程 打包更快
+    //   id: 'js',
+    //   use: [{
+    //     loader: "babel-loader",
+    //     options: {
+    //       // 用babel-loader 需要把 es6 -> es5
+    //       presets: [
+    //         "@babel/preset-env",
+    //         '@babel/preset-react'
+    //       ],
+    //       plugins: [
+    //         ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    //         ["@babel/plugin-proposal-class-properties", { "loose" : true }],
+    //         "@babel/plugin-transform-runtime"
+    //       ]
+    //     }
+    //   }]
+    // }),
+    new webpack.DllReferencePlugin({
+      // 动态链接库
+      manifest: path.resolve(__dirname, 'dist', 'manifest.json') // 300k -> 8k react react-dom 不在打包
+    }),
     new webpack.IgnorePlugin(/\.\/locale/, /moment/), // 忽略moment语言包 #21#
     new webpack.DefinePlugin({
       // 定义环境变量
@@ -111,28 +166,29 @@ module.exports = {
       chunks: ['index'],
       hash: true // 打包件文加上hash后缀
     }),
-    // new HtmlWebpackPlugin({
-    //   template: "./src/index.html", // 模版
-    //   filename: "other.html", // 输出文件名
-    //   chunks: ['other'],
-    //   hash: true // 打包文件加上hash后缀
-    // }),
+    new HtmlWebpackPlugin({
+      template: "./src/index.html", // 模版
+      filename: "other.html", // 输出文件名
+      chunks: ['other'],
+      hash: true // 打包文件加上hash后缀
+    }),
     new MiniCssExtractPlugin({
       filename: "css/main.[hash:8].css",
     }),
-    new CleanWebpackPlugin(),
-    new CopyWebpackPlugin([
-      { from: 'doc', to: './dist' }
-    ]),
-    new webpack.BannerPlugin('made in wujianwei')
+    // new CleanWebpackPlugin(),
+    // new CopyWebpackPlugin([
+    //   { from: 'doc', to: './dist' }
+    // ]),
+    new webpack.BannerPlugin('created by wujianwei')
     // new webpack.ProvidePlugin({
     //   // 在每个模块中都注入$
     //   $: "jquery"
     // })
   ],
-  externals: {
-    jquery: "jQuery"
-  },
+  // externals: {
+  //   externals配置的作用： 引用一个库 不让webpack打包 并且又不影响我们在程序中以CMD、AMD或者window/global全局等方式进行使用
+  //   jquery: "jQuery"
+  // },
   module: {
     // noParse: /jquery/, // 不去解析jquery中的依赖库 first 优化项
     // 模块
@@ -178,22 +234,26 @@ module.exports = {
       // 规则
       {
         test: /\.js$/, // normal 普通loader
+        include: path.resolve(__dirname, "src"), // 查找当前目录下的js(包括)
+        exclude: /node_modules/, // 排除node_modules下的js
+        // use: 'Happypack/loader?id=js'
         use: {
           loader: "babel-loader",
           options: {
             // 用babel-loader 需要把 es6 -> es5
             presets: [
-              "@babel/preset-env"
+              "@babel/preset-env",
+              '@babel/preset-react'
             ],
             plugins: [
               ["@babel/plugin-proposal-decorators", { "legacy": true }],
               ["@babel/plugin-proposal-class-properties", { "loose" : true }],
-              "@babel/plugin-transform-runtime"
+              "@babel/plugin-transform-runtime",
+              // "dynamic-import-webpack",
+              "@babel/plugin-syntax-dynamic-import"
             ]
           }
-        },
-        include: path.resolve(__dirname, "src"), // 查找当前目录下的js(包括)
-        exclude: /node_modules/ // 排除node_modules下的js
+        }
       },
       // css-loader 解析@important以及路径
       // style-loader 将css插入到模版中的head标签
@@ -202,6 +262,7 @@ module.exports = {
       
       {
         test: /\.css$/,
+        // use: 'Happypack/loader?id=css'
         use: [
           // {
           //   loader: "style-loader",
