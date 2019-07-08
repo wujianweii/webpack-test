@@ -1,4 +1,12 @@
 // webpack - node编写
+
+// webpack-dev-server 
+// webpack 官方提供的一个工具，可以基于当前的 webpack 构建配置快速启动一个静态服务。
+// 当 mode 为 development 时，会具备 hot reload 的功能，即当源码文件变化时，会即时更新当前页面，以便你看到最新的效果。
+
+
+
+
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 将css提取到单独的文件中
@@ -9,7 +17,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 将css提取
 // 1） CleanWebpackPlugin // 打包前删除原打包文件
 // 2)  CopyWebpackPlugin // 打包时将别的文件打包(拷贝文件)
 // 3)  BannerPlugin 内置 版权声明 给每个js加上字符串
-// const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 // const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 // 模块 Happypack 能实现多线程打包
@@ -20,22 +28,22 @@ module.exports = {
   // 优化项
   optimization: {
     // 之前使用 commonChunkPlugins
-    splitChunks: { // 分割代码块
-      cacheGroups: { // 缓存组
-        common: { // 公共模块 抽离自己写的文件
-          chunks: 'initial',
-          minSize: 0, // 文件大小
-          minChunks: 2 // 最小公用次数
-        },
-        vendor: { // 抽离第三方文件
-          priority: 1, // 权重 先抽离
-          test: /node_module/,
-          chunks: 'initial',
-          minSize: 0, // 文件大小
-          minChunks: 2 // 最小公用次数
-        }
-      },
-    },
+    // splitChunks: { // 分割代码块
+    //   cacheGroups: { // 缓存组
+    //     common: { // 公共模块 抽离自己写的文件
+    //       chunks: 'initial',
+    //       minSize: 0, // 文件大小
+    //       minChunks: 2 // 最小公用次数
+    //     },
+    //     vendor: { // 抽离第三方文件
+    //       priority: 1, // 权重 先抽离
+    //       test: /node_module/, // 直接使用 test 来做路径匹配 例如/react|angluar|lodash/
+    //       chunks: 'initial',
+    //       minSize: 0, // 文件大小
+    //       minChunks: 2 // 最小公用次数
+    //     }
+    //   },
+    // },
     // minimizer: [
     //   new TerserJSPlugin({}),
     //   new OptimizeCSSAssetsPlugin({
@@ -48,7 +56,7 @@ module.exports = {
     //   })
     // ],
   },
-  mode: "production", // 模式选择： production-生产 development-开发 none
+  mode: "development", // 模式选择： production-生产 development-开发 none
   entry: {
     // 多个入口文件·多页面应用
     index: "./src/index.js",
@@ -56,9 +64,10 @@ module.exports = {
   }, // 入口
   output: {
     // 出口
-    filename: '[name].[hash:8].js', // 打包后的文件名 [hash: 8]-每次打包生成一个新的文件 以hash区分
-    path: path.resolve(__dirname, "dist"), // 路径必须是绝对路径,
-    // publicPath: 'https://cdn.myfans.cc' // 公用的路径 调用资源的时候统一加上该路径
+    filename: '[name].[hash:8].js', // 打包后输出文件的文件名 [hash: 8]-每次打包生成一个新的文件 以hash区分
+    path: path.resolve(__dirname, "dist"), // 路径必须是绝对路径, 打包后的文件存放的地方 // https://blog.csdn.net/qq_31411389/article/details/53080544
+    // “__dirname”是node.js中的一个全局变量，它指向当前执行脚本所在的目录
+    // publicPath: 'https://cdn.myfans.cc' // 输出解析文件的目录 公用的路径 调用资源的时候统一加上该路径
   },
   // 报错-调试
   // 1) 源码映射文件 会单独生成一个sourcemap文件 出错时会标识当前报错的行和列 特点是 大 和 全
@@ -77,18 +86,19 @@ module.exports = {
   //   ignored: /node_modules/ // 不需要监听的文件
   // },
   devServer: {
-    port: 9999,
+    port: 9999, // 指定端口号
     hot: true, // 启用热更新
-    // open: true, // 重新打开页面 run
+    open: true, // 重新打开页面 run
     progress: true,
     contentBase: "./dist",
     compress: true,
+    // openPage: 'other.html' // 指定初次访问的页面
     // 1）代理 以重写的方式将请求代理到express服务器上 有毒（未成功）
     // proxy: {
     //   '/api': {
-    //     target: 'http://localhost:9999/',
+    //     target: 'http://localhost:9999/', // 将 URL 中带有 /api 的请求代理到本地的 9999 端口的服务上
     //     pathRewrite: {
-    //       '^/api': ''
+    //       '^/api': '' // 把 URL 中 path 部分的`api`移除掉
     //     }
     //   }
     // }
@@ -105,15 +115,16 @@ module.exports = {
   resolve: {
     // 解析第三方包 common
     modules: [path.resolve('node_modules')], // 从node_modules下找
-    extensions: ['.css', '.js'], // 扩展名 依次解析
+    extensions: ['.css', '.js'], // 扩展名 依次解析 模块路径解析时, webpack 会尝试帮你补全那些后缀名来进行查找 
     // mainFields: [ 'style', 'main' ],
     // mainFiles: [], // 入口文件名字 index.js
     // alias: {
-    //   // 别名 引入时使用
+    //   // 别名 引入时使用 配置常用模块的相对路径
     //   bootstrap: 'bootstrap/dist/css/bootstrap.css'
     // }
   },
   plugins: [
+    // 数组 放着所有的webpack插件
     new webpack.NamedModulesPlugin(), // 打印更新的模块路径
     new webpack.HotModuleReplacementPlugin(), // 热更新插件 支持
     // new Happypack({
@@ -143,10 +154,10 @@ module.exports = {
     //     }
     //   }]
     // }),
-    new webpack.DllReferencePlugin({
-      // 动态链接库
-      manifest: path.resolve(__dirname, 'dist', 'manifest.json') // 300k -> 8k react react-dom 不在打包
-    }),
+    // new webpack.DllReferencePlugin({
+    //   // 动态链接库
+    //   manifest: path.resolve(__dirname, 'dist', 'manifest.json') // 300k -> 8k react react-dom 不在打包
+    // }),
     new webpack.IgnorePlugin(/\.\/locale/, /moment/), // 忽略moment语言包 #21#
     new webpack.DefinePlugin({
       // 定义环境变量
@@ -154,28 +165,27 @@ module.exports = {
       FLAG: 'true',
       NUM: '1+1'
     }),
-    // 数组 放着所有的webpack插件
     new HtmlWebpackPlugin({
-      template: "./src/index.html", // 模版
-      filename: "index.html", // 输出文件名
+      template: "./src/index.html", // 模版文件的路径
+      filename: "index.html", // 输出html文件名
       minify: {
         // 压缩配置
-        removeAttributeQuotes: true, // 删除引号
+        removeAttributeQuotes: false, // 删除引号
         collapseWhitespace: false // 压缩成一行
       },
-      chunks: ['index'],
+      chunks: ['index'], // chunk 指定了该模板导入的模块，在多页面的配置中，可以在该属性中配置多个入口中的一个或者多个脚本文件
       hash: true // 打包件文加上hash后缀
     }),
     new HtmlWebpackPlugin({
-      template: "./src/index.html", // 模版
-      filename: "other.html", // 输出文件名
+      template: "./src/index.html",
+      filename: "other.html",
       chunks: ['other'],
-      hash: true // 打包文件加上hash后缀
+      hash: true 
     }),
     new MiniCssExtractPlugin({
       filename: "css/main.[hash:8].css",
     }),
-    // new CleanWebpackPlugin(),
+    new CleanWebpackPlugin(),
     // new CopyWebpackPlugin([
     //   { from: 'doc', to: './dist' }
     // ]),
@@ -186,7 +196,7 @@ module.exports = {
     // })
   ],
   // externals: {
-  //   externals配置的作用： 引用一个库 不让webpack打包 并且又不影响我们在程序中以CMD、AMD或者window/global全局等方式进行使用
+  //   // externals配置的作用： 引用一个库 不让webpack打包 并且又不影响我们在程序中以CMD、AMD或者window/global全局等方式进行使用
   //   jquery: "jQuery"
   // },
   module: {
@@ -213,10 +223,10 @@ module.exports = {
           }
         }
       },
-      // {
-      //   test: require.resolve("jquery"),
-      //   use: "expose-loader?$"
-      // },
+      {
+        test: require.resolve("jquery"),
+        use: "expose-loader?$"
+      },
       // {
       //   // test: /\.js$/,
       //   // use: {

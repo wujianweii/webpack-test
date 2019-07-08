@@ -7,6 +7,17 @@
 
 require("./index.css");
 import './styles/a';
+// 热更新
+import test from './test.js';
+let h2 = null;
+console.log("test", test);
+if (module.hot) {
+  module.hot.accept('./test', () => {
+    let str = require('./test');
+    console.log("str", str.default);
+    $('body h2').text(str.default);
+  })
+}
 // // require("./a.js");
 
 // // class A {
@@ -34,8 +45,16 @@ import logo from './assets/example.png';
 let img = new Image();
 img.src = logo;
 img.style.width = '200px';
-$('body').prepend(img);
+// console.log(img);
 
+const text = `<h2>${h2}</h2>`;
+$('body').prepend(img).append(text);
+
+// setInterval(() => {
+//   if (h2 !== $('body h2').text()) {
+//     $('body').prepend(img).append(h2);
+//   }
+// }, 100)
 
 
 
@@ -104,12 +123,3 @@ $('body').prepend(img);
 // });
 // $('body').prepend(button);
 
-// 热更新
-import test from './test.js';
-console.log("test", test);
-if (module.hot) {
-  module.hot.accept('./test', () => {
-    let str = require('./test');
-    console.log("str", str.default);
-  })
-}

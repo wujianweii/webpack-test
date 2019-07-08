@@ -1,2 +1,2 @@
 // module.exports = "webpack";
-export default 'webpack';
+export default 'webpack1';
