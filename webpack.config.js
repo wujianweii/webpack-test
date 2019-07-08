@@ -5,7 +5,9 @@
 // 当 mode 为 development 时，会具备 hot reload 的功能，即当源码文件变化时，会即时更新当前页面，以便你看到最新的效果。
 
 
-
+// import path from "path";
+// import HtmlWebpackPlugin from "html-webpack-plugin";
+// import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -17,12 +19,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 将css提取
 // 1） CleanWebpackPlugin // 打包前删除原打包文件
 // 2)  CopyWebpackPlugin // 打包时将别的文件打包(拷贝文件)
 // 3)  BannerPlugin 内置 版权声明 给每个js加上字符串
+// import { CleanWebpackPlugin } from "clean-webpack-plugin";
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 // const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 // 模块 Happypack 能实现多线程打包
 // const Happypack = require('happypack');
-
+// import webpack from "webpack";
 const webpack = require("webpack");
 module.exports = {
   // 优化项
@@ -65,7 +68,7 @@ module.exports = {
   output: {
     // 出口
     filename: '[name].[hash:8].js', // 打包后输出文件的文件名 [hash: 8]-每次打包生成一个新的文件 以hash区分
-    path: path.resolve(__dirname, "dist"), // 路径必须是绝对路径, 打包后的文件存放的地方 // https://blog.csdn.net/qq_31411389/article/details/53080544
+    path: path.resolve("dist"), // 路径必须是绝对路径, 打包后的文件存放的地方 // https://blog.csdn.net/qq_31411389/article/details/53080544
     // “__dirname”是node.js中的一个全局变量，它指向当前执行脚本所在的目录
     // publicPath: 'https://cdn.myfans.cc' // 输出解析文件的目录 公用的路径 调用资源的时候统一加上该路径
   },
@@ -223,28 +226,28 @@ module.exports = {
           }
         }
       },
-      {
-        test: require.resolve("jquery"),
-        use: "expose-loader?$"
-      },
       // {
-      //   // test: /\.js$/,
-      //   // use: {
-      //   //   loader: "eslint-loader",
-      //   //   options: {
-      //   //     enforce: "pre" // loader类型 previous 前置loader post-后置loader  内联loader normal-普通loader
-      //   //   }
-      //   // },
-      //   // exclude: /node_modules/ // 排除node_modules下的js
-      //   enforce: "pre",
-      //   test: /\.js$/,
-      //   exclude: /node_modules/,
-      //   loader: "eslint-loader"
+      //   test: require.resolve("jquery"),
+      //   use: "expose-loader?$"
       // },
+      {
+        test: /\.js$/,
+        use: {
+          loader: "eslint-loader",
+          options: {
+            enforce: "pre" // loader类型 previous 前置loader post-后置loader  内联loader normal-普通loader
+          }
+        },
+        exclude: /node_modules/ // 排除node_modules下的js
+        // enforce: "pre",
+        // test: /\.js$/,
+        // exclude: /node_modules/,
+        // loader: "eslint-loader"
+      },
       // 规则
       {
         test: /\.js$/, // normal 普通loader
-        include: path.resolve(__dirname, "src"), // 查找当前目录下的js(包括)
+        include: path.resolve("src"), // 查找当前目录下的js(包括) path.resolve(__dirname, "src")
         exclude: /node_modules/, // 排除node_modules下的js
         // use: 'Happypack/loader?id=js'
         use: {
@@ -303,3 +306,4 @@ module.exports = {
     ]
   }
 }
+// export default module;

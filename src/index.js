@@ -5,7 +5,7 @@
 
 
 
-require("./index.css");
+import "./index.css";
 import './styles/a';
 // 热更新
 import test from './test.js';
