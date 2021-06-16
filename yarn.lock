@@ -47,6 +47,13 @@
   dependencies:
     "@babel/types" "^7.0.0"
 
+"@babel/helper-annotate-as-pure@^7.14.5":
+  version "7.14.5"
+  resolved "https://registry.yarnpkg.com/@babel/helper-annotate-as-pure/-/helper-annotate-as-pure-7.14.5.tgz#7bf478ec3b71726d56a8ca5775b046fc29879e61"
+  integrity sha512-EivH9EgBIb+G8ij1B2jAwSH36WnGvkQSEC6CkX/6v6ZFlw5fVOHvsgGF4uiEHO2GzMvunZb6tDLQEQSdrdocrA==
+  dependencies:
+    "@babel/types" "^7.14.5"
+
 "@babel/helper-builder-binary-assignment-operator-visitor@^7.1.0":
   version "7.1.0"
   resolved "https://registry.npm.taobao.org/@babel/helper-builder-binary-assignment-operator-visitor/download/@babel/helper-builder-binary-assignment-operator-visitor-7.1.0.tgz#6b69628dfe4087798e0c4ed98e3d4a6b2fbd2f5f"
@@ -130,6 +137,13 @@
   dependencies:
     "@babel/types" "^7.0.0"
 
+"@babel/helper-module-imports@^7.14.5":
+  version "7.14.5"
+  resolved "https://registry.yarnpkg.com/@babel/helper-module-imports/-/helper-module-imports-7.14.5.tgz#6d1a44df6a38c957aa7c312da076429f11b422f3"
+  integrity sha512-SwrNHu5QWS84XlHwGYPDtCxcA0hrSlL2yhWYLgeOc0w7ccOl2qv4s/nARI0aYZW+bSwAL5CukeXA47B/1NKcnQ==
+  dependencies:
+    "@babel/types" "^7.14.5"
+
 "@babel/helper-module-transforms@^7.1.0", "@babel/helper-module-transforms@^7.4.4":
   version "7.4.4"
   resolved "https://registry.npm.taobao.org/@babel/helper-module-transforms/download/@babel/helper-module-transforms-7.4.4.tgz#96115ea42a2f139e619e98ed46df6019b94414b8"
@@ -153,6 +167,11 @@
   version "7.0.0"
   resolved "https://registry.npm.taobao.org/@babel/helper-plugin-utils/download/@babel/helper-plugin-utils-7.0.0.tgz#bbb3fbee98661c569034237cc03967ba99b4f250"
   integrity sha1-u7P77phmHFaQNCN8wDlnupm08lA=
+
+"@babel/helper-plugin-utils@^7.14.5", "@babel/helper-plugin-utils@^7.8.0":
+  version "7.14.5"
+  resolved "https://registry.yarnpkg.com/@babel/helper-plugin-utils/-/helper-plugin-utils-7.14.5.tgz#5ac822ce97eec46741ab70a517971e443a70c5a9"
+  integrity sha512-/37qQCE3K0vvZKwoK4XU/irIJQdIfCJuhU5eKnNxpFDsOkgFaUAwbv+RYw6eYgsC0E4hS7r5KqGULUogqui0fQ==
 
 "@babel/helper-regex@^7.0.0", "@babel/helper-regex@^7.4.4":
   version "7.4.4"
@@ -196,6 +215,16 @@
   integrity sha1-/5SJSjQL549T8GrwOLIFxJ2ZNnc=
   dependencies:
     "@babel/types" "^7.4.4"
+
+"@babel/helper-validator-identifier@^7.14.5":
+  version "7.14.5"
+  resolved "https://registry.yarnpkg.com/@babel/helper-validator-identifier/-/helper-validator-identifier-7.14.5.tgz#d0f0e277c512e0c938277faa85a3968c9a44c0e8"
+  integrity sha512-5lsetuxCLilmVGyiLEfoHBRX8UCFD+1m2x3Rj97WrW3V7H3u4RWRXA4evMjImCsin2J2YT0QaVDGf+z8ondbAg==
+
+"@babel/helper-validator-option@^7.14.5":
+  version "7.14.5"
+  resolved "https://registry.yarnpkg.com/@babel/helper-validator-option/-/helper-validator-option-7.14.5.tgz#6e72a1fff18d5dfcb878e1e62f1a021c4b72d5a3"
+  integrity sha512-OX8D5eeX4XwcroVW45NMvoYaIuFI+GQpA2a8Gi+X/U/cDUIRsV37qQfF905F0htTRCREQIB4KqPeaveRJUl3Ow==
 
 "@babel/helper-wrap-function@^7.1.0":
   version "7.2.0"
@@ -303,12 +332,26 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
 
+"@babel/plugin-syntax-dynamic-import@^7.2.0":
+  version "7.8.3"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-dynamic-import/-/plugin-syntax-dynamic-import-7.8.3.tgz#62bf98b2da3cd21d626154fc96ee5b3cb68eacb3"
+  integrity sha512-5gdGbFon+PszYzqs83S3E5mpi7/y/8M9eC90MRTZfduQOYW76ig6SOSPNe41IG5LoP3FGBn2N0RjVDSQiS94kQ==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.8.0"
+
 "@babel/plugin-syntax-json-strings@^7.2.0":
   version "7.2.0"
   resolved "https://registry.npm.taobao.org/@babel/plugin-syntax-json-strings/download/@babel/plugin-syntax-json-strings-7.2.0.tgz#72bd13f6ffe1d25938129d2a186b11fd62951470"
   integrity sha1-cr0T9v/h0lk4Ep0qGGsR/WKVFHA=
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
+
+"@babel/plugin-syntax-jsx@^7.14.5":
+  version "7.14.5"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-jsx/-/plugin-syntax-jsx-7.14.5.tgz#000e2e25d8673cce49300517a3eda44c263e4201"
+  integrity sha512-ohuFIsOMXJnbOMRfX7/w7LocdR6R7whhuRD4ax8IipLcLPlZGJKkBxgHp++U4N/vKyU16/YDQr2f5seajD3jIw==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.14.5"
 
 "@babel/plugin-syntax-object-rest-spread@^7.2.0":
   version "7.2.0"
@@ -507,6 +550,39 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
 
+"@babel/plugin-transform-react-display-name@^7.14.5":
+  version "7.14.5"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-display-name/-/plugin-transform-react-display-name-7.14.5.tgz#baa92d15c4570411301a85a74c13534873885b65"
+  integrity sha512-07aqY1ChoPgIxsuDviptRpVkWCSbXWmzQqcgy65C6YSFOfPFvb/DX3bBRHh7pCd/PMEEYHYWUTSVkCbkVainYQ==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.14.5"
+
+"@babel/plugin-transform-react-jsx-development@^7.14.5":
+  version "7.14.5"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-jsx-development/-/plugin-transform-react-jsx-development-7.14.5.tgz#1a6c73e2f7ed2c42eebc3d2ad60b0c7494fcb9af"
+  integrity sha512-rdwG/9jC6QybWxVe2UVOa7q6cnTpw8JRRHOxntG/h6g/guAOe6AhtQHJuJh5FwmnXIT1bdm5vC2/5huV8ZOorQ==
+  dependencies:
+    "@babel/plugin-transform-react-jsx" "^7.14.5"
+
+"@babel/plugin-transform-react-jsx@^7.14.5":
+  version "7.14.5"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-jsx/-/plugin-transform-react-jsx-7.14.5.tgz#39749f0ee1efd8a1bd729152cf5f78f1d247a44a"
+  integrity sha512-7RylxNeDnxc1OleDm0F5Q/BSL+whYRbOAR+bwgCxIr0L32v7UFh/pz1DLMZideAUxKT6eMoS2zQH6fyODLEi8Q==
+  dependencies:
+    "@babel/helper-annotate-as-pure" "^7.14.5"
+    "@babel/helper-module-imports" "^7.14.5"
+    "@babel/helper-plugin-utils" "^7.14.5"
+    "@babel/plugin-syntax-jsx" "^7.14.5"
+    "@babel/types" "^7.14.5"
+
+"@babel/plugin-transform-react-pure-annotations@^7.14.5":
+  version "7.14.5"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-pure-annotations/-/plugin-transform-react-pure-annotations-7.14.5.tgz#18de612b84021e3a9802cbc212c9d9f46d0d11fc"
+  integrity sha512-3X4HpBJimNxW4rhUy/SONPyNQHp5YRr0HhJdT2OH1BRp0of7u3Dkirc7x9FRJMKMqTBI079VZ1hzv7Ouuz///g==
+  dependencies:
+    "@babel/helper-annotate-as-pure" "^7.14.5"
+    "@babel/helper-plugin-utils" "^7.14.5"
+
 "@babel/plugin-transform-regenerator@^7.4.5":
   version "7.4.5"
   resolved "https://registry.npm.taobao.org/@babel/plugin-transform-regenerator/download/@babel/plugin-transform-regenerator-7.4.5.tgz#629dc82512c55cee01341fb27bdfcb210354680f"
@@ -631,6 +707,18 @@
     js-levenshtein "^1.1.3"
     semver "^5.5.0"
 
+"@babel/preset-react@^7.0.0":
+  version "7.14.5"
+  resolved "https://registry.yarnpkg.com/@babel/preset-react/-/preset-react-7.14.5.tgz#0fbb769513f899c2c56f3a882fa79673c2d4ab3c"
+  integrity sha512-XFxBkjyObLvBaAvkx1Ie95Iaq4S/GUEIrejyrntQ/VCMKUYvKLoyKxOBzJ2kjA3b6rC9/KL6KXfDC2GqvLiNqQ==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.14.5"
+    "@babel/helper-validator-option" "^7.14.5"
+    "@babel/plugin-transform-react-display-name" "^7.14.5"
+    "@babel/plugin-transform-react-jsx" "^7.14.5"
+    "@babel/plugin-transform-react-jsx-development" "^7.14.5"
+    "@babel/plugin-transform-react-pure-annotations" "^7.14.5"
+
 "@babel/runtime@^7.4.5":
   version "7.4.5"
   resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.4.5.tgz#582bb531f5f9dc67d2fcb682979894f75e253f12"
@@ -669,6 +757,14 @@
   dependencies:
     esutils "^2.0.2"
     lodash "^4.17.11"
+    to-fast-properties "^2.0.0"
+
+"@babel/types@^7.14.5":
+  version "7.14.5"
+  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.14.5.tgz#3bb997ba829a2104cedb20689c4a5b8121d383ff"
+  integrity sha512-M/NzBpEL95I5Hh4dwhin5JlE7EzO5PHMAuzjxss3tiOBD46KfQvVedN/3jEPZvdRvtsK2222XfdHogNIttFgcg==
+  dependencies:
+    "@babel/helper-validator-identifier" "^7.14.5"
     to-fast-properties "^2.0.0"
 
 "@types/anymatch@*":
@@ -959,8 +1055,8 @@ ansi-regex@^4.1.0:
 
 ansi-styles@^3.2.0, ansi-styles@^3.2.1:
   version "3.2.1"
-  resolved "https://registry.npm.taobao.org/ansi-styles/download/ansi-styles-3.2.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fansi-styles%2Fdownload%2Fansi-styles-3.2.1.tgz#41fbb20243e50b12be0f04b8dedbf07520ce841d"
-  integrity sha1-QfuyAkPlCxK+DwS43tvwdSDOhB0=
+  resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-3.2.1.tgz#41fbb20243e50b12be0f04b8dedbf07520ce841d"
+  integrity sha512-VT0ZI6kZRdTh8YyJw3SMbYm/u+NqfsAxEpWO0Pf9sq8/e94WxxOpPKx9FR1FlyCtOVDNOQ+8ntlqFxiRc+r5qA==
   dependencies:
     color-convert "^1.9.0"
 
@@ -1078,6 +1174,11 @@ async-each@^1.0.1:
   resolved "https://registry.npm.taobao.org/async-each/download/async-each-1.0.3.tgz#b727dbf87d7651602f06f4d4ac387f47d91b0cbf"
   integrity sha1-tyfb+H12UWAvBvTUrDh/R9kbDL8=
 
+async@1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/async/-/async-1.5.0.tgz#2796642723573859565633fc6274444bee2f8ce3"
+  integrity sha1-J5ZkJyNXOFlWVjP8YnRES+4vjOM=
+
 async@^1.5.2:
   version "1.5.2"
   resolved "https://registry.npm.taobao.org/async/download/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
@@ -1125,6 +1226,11 @@ babel-loader@^8.0.6:
     loader-utils "^1.0.2"
     mkdirp "^0.5.1"
     pify "^4.0.1"
+
+babel-plugin-dynamic-import-webpack@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-dynamic-import-webpack/-/babel-plugin-dynamic-import-webpack-1.1.0.tgz#955306608cdae6191cd1d3f50cf93826ff69f4e1"
+  integrity sha512-Q/Vxl3zRwC5/DMyg97Ey2UD/f7ApvO+0zXgzwT3G2N7oajGFroqcUEmXZ23QXJsr0Y+DBVNK57saaUnQhCpllA==
 
 balanced-match@^1.0.0:
   version "1.0.0"
@@ -1567,14 +1673,14 @@ collection-visit@^1.0.0:
 
 color-convert@^1.9.0, color-convert@^1.9.1:
   version "1.9.3"
-  resolved "https://registry.npm.taobao.org/color-convert/download/color-convert-1.9.3.tgz#bb71850690e1f136567de629d2d5471deda4c1e8"
-  integrity sha1-u3GFBpDh8TZWfeYp0tVHHe2kweg=
+  resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-1.9.3.tgz#bb71850690e1f136567de629d2d5471deda4c1e8"
+  integrity sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==
   dependencies:
     color-name "1.1.3"
 
 color-name@1.1.3:
   version "1.1.3"
-  resolved "https://registry.npm.taobao.org/color-name/download/color-name-1.1.3.tgz#a7d0558bd89c42f795dd42328f740831ca53bc25"
+  resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.3.tgz#a7d0558bd89c42f795dd42328f740831ca53bc25"
   integrity sha1-p9BVi9icQveV3UIyj3QIMcpTvCU=
 
 color-name@^1.0.0:
@@ -2372,7 +2478,7 @@ escape-html@~1.0.3:
 
 escape-string-regexp@^1.0.5:
   version "1.0.5"
-  resolved "https://registry.npm.taobao.org/escape-string-regexp/download/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
+  resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
 
 eslint-scope@^4.0.0:
@@ -2870,6 +2976,16 @@ handle-thing@^2.0.0:
   resolved "https://registry.npm.taobao.org/handle-thing/download/handle-thing-2.0.0.tgz#0e039695ff50c93fc288557d696f3c1dc6776754"
   integrity sha1-DgOWlf9QyT/CiFV9aW88HcZ3Z1Q=
 
+happypack@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/happypack/-/happypack-5.0.1.tgz#850839426d6205a520bf913e962349fbe523a07c"
+  integrity sha512-AzXVxLzX0mtv0T40Kic72rfcGK4Y2b/cDdtcyw+e+V/13ozl7x0+EZ4hvrL1rJ8MoefR9+FfUJQsK2irH0GWOw==
+  dependencies:
+    async "1.5.0"
+    json-stringify-safe "5.0.1"
+    loader-utils "1.1.0"
+    serialize-error "^2.1.0"
+
 har-schema@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/har-schema/download/har-schema-2.0.0.tgz#a94c2224ebcac04782a0d9035521f24735b7ec92"
@@ -2885,7 +3001,7 @@ har-validator@~5.1.0:
 
 has-flag@^3.0.0:
   version "3.0.0"
-  resolved "https://registry.npm.taobao.org/has-flag/download/has-flag-3.0.0.tgz#b5d454dc2199ae225699f3467e5a07f3b955bafd"
+  resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-3.0.0.tgz#b5d454dc2199ae225699f3467e5a07f3b955bafd"
   integrity sha1-tdRU3CGZriJWmfNGfloH87lVuv0=
 
 has-symbols@^1.0.0:
@@ -3590,9 +3706,9 @@ json-schema@0.2.3:
   resolved "https://registry.npm.taobao.org/json-schema/download/json-schema-0.2.3.tgz#b480c892e59a2f05954ce727bd3f2a4e882f9e13"
   integrity sha1-tIDIkuWaLwWVTOcnvT8qTogvnhM=
 
-json-stringify-safe@~5.0.1:
+json-stringify-safe@5.0.1, json-stringify-safe@~5.0.1:
   version "5.0.1"
-  resolved "https://registry.npm.taobao.org/json-stringify-safe/download/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
+  resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
   integrity sha1-Epai1Y/UXxmg9s4B1lcB4sc1tus=
 
 json3@^3.3.2:
@@ -3702,6 +3818,15 @@ loader-runner@^2.3.0:
   version "2.4.0"
   resolved "https://registry.npm.taobao.org/loader-runner/download/loader-runner-2.4.0.tgz#ed47066bfe534d7e84c4c7b9998c2a75607d9357"
   integrity sha1-7UcGa/5TTX6ExMe5mYwqdWB9k1c=
+
+loader-utils@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-1.1.0.tgz#c98aef488bcceda2ffb5e2de646d6a754429f5cd"
+  integrity sha1-yYrvSIvM7aL/teLeZG1qdUQp9c0=
+  dependencies:
+    big.js "^3.1.3"
+    emojis-list "^2.0.0"
+    json5 "^0.5.0"
 
 loader-utils@1.2.3, loader-utils@^1.0.2, loader-utils@^1.1.0, loader-utils@^1.2.2, loader-utils@^1.2.3:
   version "1.2.3"
@@ -4918,9 +5043,9 @@ postcss-value-parser@^4.0.0:
   integrity sha1-mamD02X3sq2ND5uMMJSSbqtLk20=
 
 postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.16, postcss@^7.0.17, postcss@^7.0.5, postcss@^7.0.6:
-  version "7.0.17"
-  resolved "https://registry.npm.taobao.org/postcss/download/postcss-7.0.17.tgz#4da1bdff5322d4a0acaab4d87f3e782436bad31f"
-  integrity sha1-TaG9/1Mi1KCsqrTYfz54JDa60x8=
+  version "7.0.36"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.36.tgz#056f8cffa939662a8f5905950c07d5285644dfcb"
+  integrity sha512-BebJSIUMwJHRH0HAQoxN4u1CN86glsrwsW0q7T+/m44eXOUAxSNdHRkNZPYz5vVUbg17hFgOQDE7fZk7li3pZw==
   dependencies:
     chalk "^2.4.2"
     source-map "^0.6.1"
@@ -5471,6 +5596,11 @@ send@0.17.1:
     range-parser "~1.2.1"
     statuses "~1.5.0"
 
+serialize-error@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/serialize-error/-/serialize-error-2.1.0.tgz#50b679d5635cdf84667bdc8e59af4e5b81d5f60a"
+  integrity sha1-ULZ51WNc34Rme9yOWa9OW4HV9go=
+
 serialize-javascript@^1.7.0:
   version "1.7.0"
   resolved "https://registry.npm.taobao.org/serialize-javascript/download/serialize-javascript-1.7.0.tgz#d6e0dfb2a3832a8c94468e6eb1db97e55a192a65"
@@ -5659,8 +5789,8 @@ source-map@^0.5.0, source-map@^0.5.3, source-map@^0.5.6:
 
 source-map@^0.6.0, source-map@^0.6.1, source-map@~0.6.0, source-map@~0.6.1:
   version "0.6.1"
-  resolved "https://registry.npm.taobao.org/source-map/download/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
-  integrity sha1-dHIq8y6WFOnCh6jQu95IteLxomM=
+  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
+  integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
 spdy-transport@^3.0.0:
   version "3.0.0"
@@ -5864,15 +5994,15 @@ stylehacks@^4.0.0:
 
 supports-color@6.1.0, supports-color@^6.1.0:
   version "6.1.0"
-  resolved "https://registry.npm.taobao.org/supports-color/download/supports-color-6.1.0.tgz#0764abc69c63d5ac842dd4867e8d025e880df8f3"
-  integrity sha1-B2Srxpxj1ayELdSGfo0CXogN+PM=
+  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-6.1.0.tgz#0764abc69c63d5ac842dd4867e8d025e880df8f3"
+  integrity sha512-qe1jfm1Mg7Nq/NSh6XE24gPXROEVsWHxC1LIx//XNlD9iw7YZQGjZNjYN7xGaEG6iKdA8EtNFW6R0gjnVXp+wQ==
   dependencies:
     has-flag "^3.0.0"
 
 supports-color@^5.3.0:
   version "5.5.0"
-  resolved "https://registry.npm.taobao.org/supports-color/download/supports-color-5.5.0.tgz#e2e69a44ac8772f78a1ec0b35b689df6530efc8f"
-  integrity sha1-4uaaRKyHcveKHsCzW2id9lMO/I8=
+  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-5.5.0.tgz#e2e69a44ac8772f78a1ec0b35b689df6530efc8f"
+  integrity sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==
   dependencies:
     has-flag "^3.0.0"
 
